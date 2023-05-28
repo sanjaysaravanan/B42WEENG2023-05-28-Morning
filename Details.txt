@@ -24,13 +24,17 @@ Authentication & Authorization:
   Authorization Flow:
     Application flow after successfull login:
       1. use the token from the login response
-      2. APIs except /login, /register should contain the request header 
-         authorization: < jwt-token >
+      2. APIs except /login, /register, read movies API should contain the request header 
+         authorization/acesstoken: < jwt-token >
       3. backend will use this token to verify the roles or access or permission of the user in backend
 
-
-One More Session at 2:00 PM:
-  FE:
-    Authentication:
-
-    Authorization:
+FE:
+  Authentication:
+    Login/Register Pages
+    Only these two pages should be accessible before login
+    trying to access any other page should direct back to the login page
+  Authorization:
+    1. Login API will return a token & role, use that token as a identifier 
+    for the login status,
+    2. use local storage to store the token
+      then restrict the user access with role
